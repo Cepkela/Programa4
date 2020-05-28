@@ -22,7 +22,6 @@ namespace Programa4
             {
                 slaves[i] = new Slave();
             }
-            int c = 0;
             int j = 0;
             int a = 0;
             int b = 1;
@@ -36,15 +35,9 @@ namespace Programa4
                 {
                     slaves[i].Files.Add(Files[j]);
                     a++;
-                    for (int c = 0; c < 50000000; c++)
-                    {
-                        //MessageBox.Show(c.ToString());
-                    }
                 }
                 b++;
                 t.Start();
-                c++;
-                fr2.setProgress(c);
             }
             // wait for slaves to die:
             for (int i = 0; i < slaveCount; i++)
