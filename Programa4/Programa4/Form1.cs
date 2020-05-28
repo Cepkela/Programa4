@@ -39,6 +39,10 @@ namespace Programa4
         private void button2_Click(object sender, EventArgs e)
         {
             Master master = new Master();
+            foreach (var item in files)
+            {
+                master.Files.Add(item);
+            }
             master.run();
         }
     }

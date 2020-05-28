@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+//using tessnet2;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Tesseract;
 
 namespace Programa4
 {
     public class Slave
     {
+        public List<string> Files = new List<string>();
         private bool done = false;
         public void halt()
         {
@@ -16,11 +24,15 @@ namespace Programa4
         }
         protected bool task()
         {
-            /*
-            if (state == goal) return true;
-            improve state;
-            return false;
-            */
+            int i = 1;
+            foreach (var item in Files)
+            {
+                var img = new Bitmap(item);
+                var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractAndCube);
+                var page = ocr.Process(img);
+                MessageBox.Show(page.GetText());
+                break;
+            }
             return true; // for now
         }
         public void run()
