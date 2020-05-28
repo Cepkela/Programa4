@@ -29,7 +29,7 @@ namespace Programa4
                 }
                 else
                 {
-                    simulateHeavyJob();
+                    //simulateHeavyJob();
                     backgroundWorker1.ReportProgress(i);
                 }
             }
@@ -56,12 +56,7 @@ namespace Programa4
         }
         private void simulateHeavyJob()
         {
-            Master master = new Master();
-            foreach (var item in Files)
-            {
-                master.Files.Add(item);
-            }
-            master.run();
+
         }
         private void display(string Text)
         {
@@ -71,6 +66,20 @@ namespace Programa4
         private void button1_Click(object sender, EventArgs e)
         {
             backgroundWorker1.RunWorkerAsync();
+            progressBar1.Value = 0;
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = Files.Count();
+            progressBar1.Step = 1;
+            Master master = new Master();
+            foreach (var item in Files)
+            {
+                master.Files.Add(item);
+            }
+            master.run();
+            this.Invoke(new MethodInvoker(() =>
+            {
+                progressBar1.PerformStep();
+            }));
         }
 
         private void button2_Click(object sender, EventArgs e)
