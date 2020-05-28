@@ -65,7 +65,7 @@ namespace Programa4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
+            //backgroundWorker1.RunWorkerAsync();
             progressBar1.Value = 0;
             progressBar1.Minimum = 0;
             progressBar1.Maximum = Files.Count();
@@ -74,6 +74,10 @@ namespace Programa4
             foreach (var item in Files)
             {
                 master.Files.Add(item);
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    progressBar1.PerformStep();
+                }));
             }
             master.run();
         }

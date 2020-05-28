@@ -45,6 +45,7 @@ namespace Programa4
                 try
                 {
                     threads[i].Join();
+                    
                 }
                 catch (ThreadInterruptedException ie)
                 {
