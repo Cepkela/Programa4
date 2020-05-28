@@ -23,17 +23,19 @@ namespace Programa4
             }
             int j = 0;
             int a = 0;
+            int b = 1;
             // start slaves:
-            for (int i = 1; i < slaveCount+1; i++)
+            for (int i = 0; i < slaveCount; i++)
             {
-
-                for (j = a; j <= 10*i; j++)
-                {
-                    slaves[i].Files.Add(Files[j+1]);
-                    a++;
-                }
                 Thread t = new Thread(new ThreadStart(slaves[i].run));
                 threads.Add(t);
+               // MessageBox.Show(Files.Count.ToString());
+                for (j = a; j < 10*b; j++)
+                {
+                    slaves[i].Files.Add(Files[j]);
+                    a++;
+                }
+                b++;
                 t.Start();
             }
             // wait for slaves to die:

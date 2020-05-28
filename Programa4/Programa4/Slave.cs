@@ -19,9 +19,11 @@ namespace Programa4
         }
         protected bool task()
         {
+            int i = 1;
             foreach (var item in Files)
             {
-                MessageBox.Show(item);
+                MessageBox.Show(i.ToString());
+                i++;
             }
             return true; // for now
         }
