@@ -25,14 +25,14 @@ namespace Programa4
         protected bool task()
         {
             int i = 1;
-            foreach (var item in Files)
+            /*foreach (var item in Files)
             {
                 var img = new Bitmap(item);
-                var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractAndCube);
+                var ocr = new TesseractEngine(".\tessdata", "eng", EngineMode.TesseractAndCube);
                 var page = ocr.Process(img);
                 MessageBox.Show(page.GetText());
                 break;
-            }
+            }*/
             return true; // for now
         }
         public void run()
