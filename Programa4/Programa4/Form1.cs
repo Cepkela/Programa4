@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Programa4
 {
     public partial class Form1 : Form
     {
+        string[] files;
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +23,23 @@ namespace Programa4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            folder.ShowNewFolderButton = true;
+            DialogResult result = folder.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                textBox1.Text = folder.SelectedPath;
+                Environment.SpecialFolder root = folder.RootFolder;
+                string filename = Directory.GetFiles(textBox1.Text).First();
+                files = Directory.GetFiles(textBox1.Text);
+                MessageBox.Show(Convert.ToString(files.Length));
+            }
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Master master = new Master();
+            master.run();
         }
     }
 }
