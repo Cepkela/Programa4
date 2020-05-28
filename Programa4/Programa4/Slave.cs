@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+//using tessnet2;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tesseract;
 
 namespace Programa4
 {
@@ -22,8 +27,11 @@ namespace Programa4
             int i = 1;
             foreach (var item in Files)
             {
-                MessageBox.Show(i.ToString());
-                i++;
+                var img = new Bitmap(item);
+                var ocr = new TesseractEngine("./tessdata", "eng", EngineMode.TesseractAndCube);
+                var page = ocr.Process(img);
+                MessageBox.Show(page.GetText());
+                break;
             }
             return true; // for now
         }
