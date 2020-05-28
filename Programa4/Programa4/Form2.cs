@@ -13,6 +13,7 @@ namespace Programa4
 {
     public partial class Form2 : Form
     {
+        public List<string> Files = new List<string>();
         public Form2()
         {
             InitializeComponent();
@@ -55,7 +56,12 @@ namespace Programa4
         }
         private void simulateHeavyJob()
         {
-            Thread.Sleep(100);
+            Master master = new Master();
+            foreach (var item in Files)
+            {
+                master.Files.Add(item);
+            }
+            master.run();
         }
         private void display(string Text)
         {

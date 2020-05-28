@@ -14,10 +14,10 @@ namespace Programa4
     public partial class Form1 : Form
     {
         string[] files;
+        Form2 fr2 = new Form2();
         public Form1()
         {
             InitializeComponent();
-            Form2 fr2 = new Form2();
             fr2.Show();
         }
 
@@ -33,6 +33,10 @@ namespace Programa4
                 string filename = Directory.GetFiles(textBox1.Text).First();
                 files = Directory.GetFiles(textBox1.Text);
                 MessageBox.Show(Convert.ToString(files.Length));
+            }
+            foreach (var item in files)
+            {
+                fr2.Files.Add(item);
             }
         }
 
