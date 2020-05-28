@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Programa4
 {
     public class Slave
     {
+        public List<string> Files = new List<string>();
         private bool done = false;
         public void halt()
         {
@@ -16,11 +19,10 @@ namespace Programa4
         }
         protected bool task()
         {
-            /*
-            if (state == goal) return true;
-            improve state;
-            return false;
-            */
+            foreach (var item in Files)
+            {
+                MessageBox.Show(item);
+            }
             return true; // for now
         }
         public void run()
