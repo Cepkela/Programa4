@@ -76,10 +76,6 @@ namespace Programa4
                 master.Files.Add(item);
             }
             master.run();
-            this.Invoke(new MethodInvoker(() =>
-            {
-                progressBar1.PerformStep();
-            }));
         }
 
         private void button2_Click(object sender, EventArgs e)
