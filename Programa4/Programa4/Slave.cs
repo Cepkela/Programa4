@@ -27,10 +27,10 @@ namespace Programa4
             int i = 1;
             foreach (var item in Files)
             {
-                /*var img = new Bitmap(item);
-                var ocr = new TesseractEngine("tessdata", "eng", EngineMode.TesseractAndCube);
+                var img = new Bitmap(item);
+                var ocr = new TesseractEngine("tessdata", "eng", EngineMode.TesseractAndCube);// Sudmaliauja sita eilute paziurek kazka gal rasi nes man jau nervai neatlaike
                 var page = ocr.Process(img);
-                MessageBox.Show(page.GetText());*/
+                MessageBox.Show(page.GetText());
                 break;
             }
             return true; // for now
